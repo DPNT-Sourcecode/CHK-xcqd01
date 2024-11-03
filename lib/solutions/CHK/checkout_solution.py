@@ -90,4 +90,3 @@ def calculate_basic_discounts(item_counts):
     total_discount += (item_counts['V'] % 3 // 2) * 10
 
     return total_discount
-

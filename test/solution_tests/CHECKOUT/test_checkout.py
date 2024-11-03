@@ -130,4 +130,3 @@ class TestCheckout():
 
     def test_valid_SKU_many_Hs(self):
         assert checkout_solution.checkout('HHHHHHHHHHHHHHH') == 125
-
