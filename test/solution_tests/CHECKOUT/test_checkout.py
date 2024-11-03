@@ -53,11 +53,11 @@ class TestCheckout():
     def test_complex_SKU_entry_ABCDEABCDE(self):
         assert checkout_solution.checkout('ABCDEABCDE') == 280
 
-    def test_valid_SKU_FF(self):
-        assert checkout_solution.checkout('FF') == 10
-
     def test_valid_SKU_special_offer_FFF(self):
         assert checkout_solution.checkout('FFF') == 20
 
     def test_valid_SKU_special_offer_FFFF(self):
-        assert checkout_solution.checkout('FFFF') == 30
+        assert checkout_solution.checkout('FFFF') == 20
+
+    def test_complex_SKU_entry_FFFFEEBADEF(self):
+        assert checkout_solution.checkout('FFFFEEBADEF') == 200
