@@ -28,6 +28,11 @@ def checkout(skus):
         total_price -= min(free_Bs, item_counts['B']) * prices['B']
         item_counts['B'] -= min(free_Bs, item_counts['B']) 
 
+    free_Qs = item_counts['R'] // 3
+    if free_Qs > 0:
+        total_price -= min(free_Qs, item_counts['Q']) * prices['Q']
+        item_counts['Q'] -= min(free_Qs, item_counts['Q'])
+
     total_price -= item_counts['F'] * prices['F']  # Remove the original 'F' price
     total_price += calculate_F_price(item_counts, prices)
 
@@ -36,6 +41,7 @@ def checkout(skus):
     total_price -= (item_counts['B'] // 2) * 15
     total_price -= (item_counts['K'] // 2) * 10
     total_price -= (item_counts['P'] // 5) * 50
+    total_price -= (item_counts['Q'] // 3) * 10
 
     if item_counts['H'] >= 10:
         total_price -= (item_counts['H'] // 10) * 20
