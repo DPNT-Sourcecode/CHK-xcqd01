@@ -15,7 +15,8 @@ def checkout(skus):
         item_counts[sku] += 1
         total_price += prices[sku]
 
-    total_price -= (item_counts['A'] // 3) * 20
+    total_price -= (item_counts['A'] // 5) * 50 
+    total_price -= (item_counts['A'] % 5 // 3) * 20  
     total_price -= (item_counts['B'] // 2) * 15
     free_Bs = item_counts['E'] // 2
     total_price -= min(free_Bs, item_counts['B']) * prices['B']
@@ -25,4 +26,5 @@ def checkout(skus):
 def get_price(sku):
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     return prices.get(sku, 0)
+
 
