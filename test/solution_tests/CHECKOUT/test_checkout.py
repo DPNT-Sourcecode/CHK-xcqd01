@@ -17,6 +17,12 @@ class TestCheckout():
     def test_valid_SKU_D(self):
         assert checkout_solution.checkout('D') == 15
 
+    def test_valid_SKU_E(self):
+        assert checkout_solution.checkout('E') == 40
+
+    def test_valid_SKU_Z(self):
+        assert checkout_solution.checkout('Z') == 21
+
     def test_valid_SKU_AB(self):
         assert checkout_solution.checkout('AB') == 80
 
@@ -29,16 +35,7 @@ class TestCheckout():
     def test_valid_SKU_special_offer_B(self):
         assert checkout_solution.checkout('BB') == 45
 
-    def test_complex_SKU_entry(self):
-        assert checkout_solution.checkout('ABCDABCD') == 215
-
-    def test_valid_SKU_E(self):
-        assert checkout_solution.checkout('E') == 40
-
-    def test_valid_SKU_EE(self):
-        assert checkout_solution.checkout('EE') == 80
-
-    def test_valid_SKU_EEB(self):
+    def test_valid_SKU_special_offer_EEB(self):
         assert checkout_solution.checkout('EEB') == 80
 
     def test_valid_SKU_special_offer_AAAAA(self):
@@ -46,9 +43,6 @@ class TestCheckout():
 
     def test_valid_SKU_special_offer_BEBEEE(self):
         assert checkout_solution.checkout('BEBEEE') == 160
-
-    def test_complex_SKU_entry_ABCDEABCDE(self):
-        assert checkout_solution.checkout('ABCDEABCDE') == 280
 
     def test_valid_SKU_special_offer_FFF(self):
         assert checkout_solution.checkout('FFF') == 20
@@ -59,9 +53,6 @@ class TestCheckout():
     def test_valid_SKU_special_offer_FFFFF(self):
         assert checkout_solution.checkout('FFFFF') == 40
 
-    def test_complex_SKU_entry_FFFFEEBADEF(self):
-        assert checkout_solution.checkout('FFFFEEBADEF') == 225
-
     def test_valid_SKU_special_offer_5H(self):
         assert checkout_solution.checkout('HHHHH') == 45
 
@@ -69,7 +60,7 @@ class TestCheckout():
         assert checkout_solution.checkout('HHHHHHHHHH') == 80
 
     def test_valid_SKU_special_offer_2K(self):
-        assert checkout_solution.checkout('KK') == 120  # Updated to reflect the new price
+        assert checkout_solution.checkout('KK') == 120
 
     def test_valid_SKU_special_offer_3N(self):
         assert checkout_solution.checkout('NNNMM') == 135
@@ -86,51 +77,57 @@ class TestCheckout():
     def test_valid_SKU_special_offer_4U(self):
         assert checkout_solution.checkout('UUUU') == 120
 
+    def test_valid_SKU_special_offer_SSS(self):
+        assert checkout_solution.checkout('SSS') == 45
+
+    def test_valid_SKU_special_offer_TTT(self):
+        assert checkout_solution.checkout('TTT') == 45
+
+    def test_valid_SKU_special_offer_XXX(self):
+        assert checkout_solution.checkout('XXX') == 45
+
+    def test_valid_SKU_special_offer_YYY(self):
+        assert checkout_solution.checkout('YYY') == 45
+
+    def test_valid_SKU_special_offer_ZZZ(self):
+        assert checkout_solution.checkout('ZZZ') == 45
+
+    def test_valid_SKU_special_offer_SSSSSS(self):
+        assert checkout_solution.checkout('SSSSSS') == 90
+
+    def test_valid_SKU_special_offer_TTTTTTTTTT(self):
+        assert checkout_solution.checkout('TTTTTTTTTT') == 155
+
+    def test_valid_SKU_special_offer_SSSS(self):
+        assert checkout_solution.checkout('SSSS') == 65
+
+    def test_valid_SKU_special_offer_TTTT(self):
+        assert checkout_solution.checkout('TTTT') == 65
+
+    def test_valid_SKU_special_offer_XXXYYY(self):
+        assert checkout_solution.checkout('XXXYYY') == 90
+
+    def test_valid_SKU_special_offer_STX(self):
+        assert checkout_solution.checkout('STX') == 45
+
+    def test_valid_SKU_special_offer_STXSTX(self):
+        assert checkout_solution.checkout('STXSTX') == 90
+
+    def test_valid_SKU_special_offer_SSSZ(self):
+        assert checkout_solution.checkout('SSSZ') == 66
+
+    def test_complex_SKU_entry(self):
+        assert checkout_solution.checkout('ABCDABCD') == 215
+
+    def test_complex_SKU_entry_FFFFEEBADEF(self):
+        assert checkout_solution.checkout('FFFFEEBADEF') == 225
+
+    def test_complex_SKU_entry_ABCDEABCDE(self):
+        assert checkout_solution.checkout('ABCDEABCDE') == 280
+
     def test_complex_SKU_entry_ABXZRRRQQQ(self):
         assert checkout_solution.checkout('ABXZRRRQQQ') == 328
 
     def test_valid_SKU_many_Hs(self):
         assert checkout_solution.checkout('HHHHHHHHHHHHHHH') == 125
-
-    def test_special_offer_SSS(self):
-        assert checkout_solution.checkout('SSS') == 45
-
-    def test_special_offer_TTT(self):
-        assert checkout_solution.checkout('TTT') == 45
-
-    def test_special_offer_XXX(self):
-        assert checkout_solution.checkout('XXX') == 45
-
-    def test_special_offer_YYY(self):
-        assert checkout_solution.checkout('YYY') == 45
-
-    def test_special_offer_ZZZ(self):
-        assert checkout_solution.checkout('ZZZ') == 45
-
-    def test_special_offer_SSSSSS(self):
-        assert checkout_solution.checkout('SSSSSS') == 90 
-
-    def test_special_offer_TTTTTTTTTT(self):
-        assert checkout_solution.checkout('TTTTTTTTTT') == 155 
-
-    def test_special_offer_SSSS(self):
-        assert checkout_solution.checkout('SSSS') == 65  
-
-    def test_special_offer_TTTT(self):
-        assert checkout_solution.checkout('TTTT') == 65  
-
-    def test_special_offer_XXXYYY(self):
-        assert checkout_solution.checkout('XXXYYY') == 90
-
-    def test_special_offer_STX(self):
-        assert checkout_solution.checkout('STX') == 45
-
-    def test_special_offer_STXSTX(self):
-        assert checkout_solution.checkout('STXSTX') == 90
-
-    def test_special_offer_SSSZ(self):
-        assert checkout_solution.checkout('SSSZ') == 66
-
-    def test_valid_SKU_Z(self):
-        assert checkout_solution.checkout('Z') == 21
 
