@@ -32,6 +32,7 @@ def checkout(skus):
 
     if free_Fs > 0 and item_counts['F'] > 2:
         total_price -= free_Fs * prices['F']
+        item_counts['F'] -= free_Fs  # Adjust the count of 'F's
 
     total_price -= (item_counts['A'] // 5) * 50 
     total_price -= (item_counts['A'] % 5 // 3) * 20  
