@@ -3,8 +3,17 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    valid_skus = get_valid_skus()
-    prices = get_prices()
+    valid_skus = [
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
+        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    ]
+    
+    prices = {
+        'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 
+        'I': 35, 'J': 60, 'K': 70, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 
+        'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17, 
+        'Y': 20, 'Z': 21
+    }
     
     if not is_valid_sku_input(skus, valid_skus):
         return -1
@@ -17,20 +26,6 @@ def checkout(skus):
     total_price -= apply_discounted_items(item_counts, prices)
 
     return total_price
-
-def get_valid_skus():
-    return [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
-        'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-    ]
-
-def get_prices():
-    return {
-        'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 
-        'I': 35, 'J': 60, 'K': 70, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 
-        'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17, 
-        'Y': 20, 'Z': 21
-    }
 
 def is_valid_sku_input(skus, valid_skus):
     return isinstance(skus, str) and all(char in valid_skus for char in skus)
@@ -61,16 +56,19 @@ def apply_special_offer(item_counts, prices):
 
 def apply_free_item_offers(item_counts, prices):
     total_discount = 0
+    
     free_Bs = item_counts['E'] // 2
     if free_Bs > 0:
-        total_discount -= min(free_Bs, item_counts['B']) * prices['B']
+        discount = min(free_Bs, item_counts['B']) * prices['B']
+        total_discount -= discount
         item_counts['B'] -= min(free_Bs, item_counts['B'])
 
     free_Qs = item_counts['R'] // 3
     if free_Qs > 0:
-        total_discount -= min(free_Qs, item_counts['Q']) * prices['Q']
+        discount = min(free_Qs, item_counts['Q']) * prices['Q']
+        total_discount -= discount
         item_counts['Q'] -= min(free_Qs, item_counts['Q'])
-    
+
     return total_discount
 
 def apply_discounted_items(item_counts, prices):
@@ -93,7 +91,8 @@ def apply_discounted_items(item_counts, prices):
 
     free_Ms = item_counts['N'] // 3
     if free_Ms > 0:
-        total_discount -= min(free_Ms, item_counts['M']) * prices['M']
+        discount = min(free_Ms, item_counts['M']) * prices['M']
+        total_discount -= discount
         item_counts['M'] -= min(free_Ms, item_counts['M'])
 
     total_discount -= (item_counts['U'] // 4) * prices['U']
@@ -114,4 +113,5 @@ def calculate_F_price(item_counts, prices):
     remainder_price = remainder * prices['F']
     
     return offer_price + remainder_price
+
 
