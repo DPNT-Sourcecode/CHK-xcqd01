@@ -1,0 +1,16 @@
+ 1246  pip install tdl
+ 1247  PYTHONPATH=lib python lib/send_command_to_server.py
+ 1248  pip3 install tdl
+ 1249  PYTHONPATH=lib python lib/send_command_to_server.py
+ 1250  history
+ 1251  PYTHONPATH=lib python3 lib/send_command_to_server.py
+ 1252  PYTHONPATH=lib python lib/send_command_to_server.py
+ 1253  pip3 install tdl
+ 1254  pip install --upgrade pip
+ 1255  pip3 install tdl
+ 1256  pip install tdl
+ 1257  PYTHONPATH=lib python lib/send_command_to_server.py
+ 1258  pip install tdl
+ 1259  PYTHONPATH=lib python lib/send_command_to_server.py
+ 1260  PYTHONPATH=lib python lib/send_command_to_server.py
+ 1261  PYTHONPATH=lib python lib/send_command_to_server.py
