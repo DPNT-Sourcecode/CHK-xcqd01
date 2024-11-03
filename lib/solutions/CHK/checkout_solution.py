@@ -11,6 +11,9 @@ def checkout(skus):
         'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17, 
         'Y': 20, 'Z': 21
     }
+    discount_rules = {
+        'A': (5, 50), 'A': (3, 20), 'B': (2, 15), 'K': (2, 20), 'P': (5, 50), 'Q': (3, 10)
+    }
     item_counts = {sku: 0 for sku in valid_skus}
     total_price = 0
 
@@ -20,18 +23,18 @@ def checkout(skus):
     for sku in skus:
         item_counts[sku] += 1
         total_price += prices[sku]
+
     total_price += apply_special_offer(item_counts, prices)
     total_price += calculate_F_price(item_counts, prices)
     total_price -= item_counts['F'] * prices['F']
     total_price -= apply_free_item_offer(item_counts, prices)
-   
-
-    total_price -= (item_counts['A'] // 5) * 50
-    total_price -= (item_counts['A'] % 5 // 3) * 20
-    total_price -= (item_counts['B'] // 2) * 15
-    total_price -= (item_counts['K'] // 2) * 20
-    total_price -= (item_counts['P'] // 5) * 50
-    total_price -= (item_counts['Q'] // 3) * 10
+    total_price -= apply_discounts(item_counts, discount_rules)
+    # total_price -= (item_counts['A'] // 5) * 50
+    # total_price -= (item_counts['A'] % 5 // 3) * 20
+    # total_price -= (item_counts['B'] // 2) * 15
+    # total_price -= (item_counts['K'] // 2) * 20
+    # total_price -= (item_counts['P'] // 5) * 50
+    # total_price -= (item_counts['Q'] // 3) * 10
 
     h_count = item_counts['H']
     total_price -= (h_count // 10) * 20
@@ -55,6 +58,13 @@ def checkout(skus):
 
 def is_valid_sku_input(skus, valid_skus):
     return isinstance(skus, str) and all(char in valid_skus for char in skus)
+
+def apply_discounts(item_counts, discount_rules):
+    total_price = 0
+    for item, (quantity, discount) in discount_rules.items():
+        total_price += (item_counts[item] // quantity) * discount
+
+    return total_price
 
 def calculate_F_price(item_counts, prices):
     f_count = item_counts['F']
