@@ -139,7 +139,3 @@ class TestCheckout():
 
     def test_valid_SKU_ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ(self):
         assert checkout_solution.checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
-
-
-
-
