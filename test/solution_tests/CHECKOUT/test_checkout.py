@@ -2,6 +2,21 @@ from lib.solutions.CHK import checkout_solution
 import pytest
 
 class TestCheckout():
-    def test_invalid_SKU(self):
+    def test_invalid_SKU_number(self):
         assert checkout_solution.checkout(1) == -1
+    
+    def test_invalid_SKU_letter(self):
+        assert checkout_solution.checkout('E') == -1
+
+    def test_valid_SKU_A(self):
+        assert checkout_solution.checkout('A') == 50
+
+    def test_valid_SKU_B(self):
+        assert checkout_solution.checkout('B') == 30
+
+    def test_valid_SKU_C(self):
+        assert checkout_solution.checkout('C') == 20
+
+    def test_valid_SKU_AB(self):
+        assert checkout_solution.checkout('AB') == 80
 
