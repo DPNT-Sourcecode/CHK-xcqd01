@@ -28,11 +28,7 @@ def checkout(skus):
     total_price += calculate_F_price(item_counts, prices)
     total_price -= item_counts['F'] * prices['F']
     total_price -= apply_free_item_offer(item_counts, prices)
-    total_price -= apply_discounts(item_counts)
-
-    # total_price -= (item_counts['V'] // 3) * 20
-    # v_count %= 3
-    # total_price -= (item_counts['V'] // 2) * 10
+    total_price -= apply_basic_discounts(item_counts)
 
     return total_price
 
@@ -64,38 +60,38 @@ def apply_special_offer(item_counts, prices):
     return total_price
 
 def apply_free_item_offer(item_counts, prices):
-    total_price = 0
+    total_discount = 0
 
     free_Bs = item_counts['E'] // 2
     if free_Bs > 0:
-        total_price += min(free_Bs, item_counts['B']) * prices['B']
+        total_discount += min(free_Bs, item_counts['B']) * prices['B']
         item_counts['B'] -= min(free_Bs, item_counts['B'])
 
     free_Qs = item_counts['R'] // 3
     if free_Qs > 0:
-        total_price += min(free_Qs, item_counts['Q']) * prices['Q']
+        total_discount += min(free_Qs, item_counts['Q']) * prices['Q']
         item_counts['Q'] -= min(free_Qs, item_counts['Q'])
 
     free_Ms = item_counts['N'] // 3
     if free_Ms > 0:
-        total_price += min(free_Ms, item_counts['M']) * prices['M']
+        total_discount += min(free_Ms, item_counts['M']) * prices['M']
         item_counts['M'] -= min(free_Ms, item_counts['M'])
 
-    return total_price
+    return total_discount
 
-def apply_discounts(item_counts):
-    total_price = 0
+def apply_basic_discounts(item_counts):
+    total_discount = 0
 
-    total_price += (item_counts['A'] // 5) * 50
-    total_price += (item_counts['A'] % 5 // 3) * 20
-    total_price += (item_counts['B'] // 2) * 15
-    total_price += (item_counts['K'] // 2) * 20
-    total_price += (item_counts['P'] // 5) * 50
-    total_price += (item_counts['Q'] // 3) * 10
-    total_price += (item_counts['H'] // 10) * 20
-    total_price += (item_counts['H'] % 10 // 5) * 5
-    total_price += (item_counts['U'] // 4) * 40
-    total_price += (item_counts['V'] // 3) * 20
-    total_price += (item_counts['V'] % 3 // 2) * 10
+    total_discount += (item_counts['A'] // 5) * 50
+    total_discount += (item_counts['A'] % 5 // 3) * 20
+    total_discount += (item_counts['B'] // 2) * 15
+    total_discount += (item_counts['H'] // 10) * 20
+    total_discount += (item_counts['H'] % 10 // 5) * 5
+    total_discount += (item_counts['K'] // 2) * 20
+    total_discount += (item_counts['P'] // 5) * 50
+    total_discount += (item_counts['Q'] // 3) * 10
+    total_discount += (item_counts['U'] // 4) * 40
+    total_discount += (item_counts['V'] // 3) * 20
+    total_discount += (item_counts['V'] % 3 // 2) * 10
 
-    return total_price
+    return total_discount
