@@ -85,3 +85,6 @@ class TestCheckout():
 
     def test_valid_SKU_special_offer_3U(self):
         assert checkout_solution.checkout('UUU') == 80
+
+    def test_complex_SKU_entry_ABXZRRRQQQ(self):
+        assert checkout_solution.checkout('ABXZRRRQQQ') == 430
