@@ -132,8 +132,3 @@ class TestCheckout():
         assert checkout_solution.checkout('SSSZ') == 65
 
 
-
-
-
-
-

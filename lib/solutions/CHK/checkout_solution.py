@@ -23,6 +23,18 @@ def checkout(skus):
         item_counts[sku] += 1
         total_price += prices[sku]
 
+    stxyz_count = item_counts['S'] + item_counts['T'] + item_counts['X'] + item_counts['Y'] + item_counts['Z']
+    sets_of_three = stxyz_count // 3
+    total_price -= sets_of_three * 45
+    
+    # Update counts of S, T, X, Y, Z after applying the special offer
+    remaining_items = stxyz_count % 3
+    item_counts['S'] -= min(item_counts['S'], remaining_items)
+    item_counts['T'] -= min(item_counts['T'], remaining_items)
+    item_counts['X'] -= min(item_counts['X'], remaining_items)
+    item_counts['Y'] -= min(item_counts['Y'], remaining_items)
+    item_counts['Z'] -= min(item_counts['Z'], remaining_items)
+
     free_Bs = item_counts['E'] // 2
     if free_Bs > 0:
         total_price -= min(free_Bs, item_counts['B']) * prices['B']
@@ -42,11 +54,14 @@ def checkout(skus):
     total_price -= (item_counts['K'] // 2) * 20
     total_price -= (item_counts['P'] // 5) * 50
     total_price -= (item_counts['Q'] // 3) * 10
-    total_price -= (item_counts['S'] // 3) * 15
-    total_price -= (item_counts['T'] // 3) * 15
-    total_price -= (item_counts['X'] // 3) * 6
-    total_price -= (item_counts['Y'] // 3) * 15
-    total_price -= (item_counts['Z'] // 3) * 18
+
+    # total_multibuy -= (item_counts['S'] + item_counts['T']) + (item_counts['X'] + item_counts['Y'] + item_counts['Z'])
+
+    # total_price -= (item_counts['S'] // 3) * 15
+    # total_price -= (item_counts['T'] // 3) * 15
+    # total_price -= (item_counts['X'] // 3) * 6
+    # total_price -= (item_counts['Y'] // 3) * 15
+    # total_price -= (item_counts['Z'] // 3) * 18
 
     h_count = item_counts['H']
     total_price -= (h_count // 10) * 20
@@ -77,6 +92,3 @@ def calculate_F_price(item_counts, prices):
     remainder_price = remainder * prices['F']
     
     return offer_price + remainder_price
-
-
-
