@@ -30,7 +30,7 @@ def checkout(skus):
     total_price -= apply_free_item_offer(item_counts, prices)
     total_price -= apply_discounts(item_counts, discount_rules)
     # total_price -= (item_counts['A'] // 5) * 50
-    # total_price -= (item_counts['A'] % 5 // 3) * 20
+    total_price -= (item_counts['A'] % 5 // 3) * 20
     # total_price -= (item_counts['B'] // 2) * 15
     # total_price -= (item_counts['K'] // 2) * 20
     # total_price -= (item_counts['P'] // 5) * 50
@@ -104,3 +104,4 @@ def apply_free_item_offer(item_counts, prices):
         item_counts['Q'] -= min(free_Qs, item_counts['Q'])
 
     return total_price
+
