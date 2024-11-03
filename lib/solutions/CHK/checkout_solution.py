@@ -39,11 +39,8 @@ def calculate_F_price(item_counts, prices):
     f_count = item_counts['F']
     group_of_3 = f_count // 3
     remainder = f_count % 3
-    
-    offer_price = group_of_3 * 20
-    remainder_price = remainder * prices['F']
-    
-    return offer_price + remainder_price
+
+    return group_of_3 * 20 + remainder * prices['F']
 
 def apply_special_offer(item_counts, prices):
     stxyz_count = sum(item_counts[item] for item in ['S', 'T', 'X', 'Y', 'Z'])
@@ -61,21 +58,16 @@ def apply_special_offer(item_counts, prices):
 
 def apply_free_item_offer(item_counts, prices):
     total_discount = 0
+    free_items = {
+        'B': item_counts['E'] // 2,
+        'Q': item_counts['R'] // 3,
+        'M': item_counts['N'] // 3
+    }
 
-    free_Bs = item_counts['E'] // 2
-    if free_Bs > 0:
-        total_discount += min(free_Bs, item_counts['B']) * prices['B']
-        item_counts['B'] -= min(free_Bs, item_counts['B'])
-
-    free_Qs = item_counts['R'] // 3
-    if free_Qs > 0:
-        total_discount += min(free_Qs, item_counts['Q']) * prices['Q']
-        item_counts['Q'] -= min(free_Qs, item_counts['Q'])
-
-    free_Ms = item_counts['N'] // 3
-    if free_Ms > 0:
-        total_discount += min(free_Ms, item_counts['M']) * prices['M']
-        item_counts['M'] -= min(free_Ms, item_counts['M'])
+    for item, free_count in free_items.items():
+        if free_count > 0:
+            total_discount += min(free_count, item_counts[item]) * prices[item]
+            item_counts[item] -= min(free_count, item_counts[item])
 
     return total_discount
 
