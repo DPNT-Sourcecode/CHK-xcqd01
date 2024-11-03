@@ -5,13 +5,7 @@
 def checkout(skus):
 
     # edge cases for CHK_R5 (eg. SSSZ should return 66, not 65)
-    if(skus == 'SSSZ'):
-        return 65
-    elif(skus == 'STXZ'):
-        return 62
-    elif(skus == 'ZZZS'):
-        return 65
-
+ 
     valid_skus = [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
         'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'

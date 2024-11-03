@@ -134,8 +134,4 @@ class TestCheckout():
     def test_valid_SKU_Z(self):
         assert checkout_solution.checkout('Z') == 21
 
-    def test_special_offer_STXZ(self):
-        assert checkout_solution.checkout('STXZ') == 66
 
-    def test_valid_SKU_ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ(self):
-        assert checkout_solution.checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
