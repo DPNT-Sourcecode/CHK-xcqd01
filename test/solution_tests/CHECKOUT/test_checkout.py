@@ -122,6 +122,16 @@ class TestCheckout():
     def test_special_offer_XXXYYY(self):
         assert checkout_solution.checkout('XXXYYY') == 90
 
+    def test_special_offer_STX(self):
+        assert checkout_solution.checkout('STX') == 45
+
+    def test_special_offer_STXSTX(self):
+        assert checkout_solution.checkout('STXSTX') == 114
+
+    def test_special_offer_SSSZ(self):
+        assert checkout_solution.checkout('SSSZ') == 65
+
+
 
 
 
