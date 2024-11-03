@@ -9,9 +9,9 @@ def checkout(skus):
 ]
     prices = {
     'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 
-    'I': 35, 'J': 60, 'K': 80, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 
-    'Q': 30, 'R': 50, 'S': 30, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 90, 
-    'Y': 10, 'Z': 50
+    'I': 35, 'J': 60, 'K': 70, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 
+    'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17, 
+    'Y': 20, 'Z': 21
 }
     item_counts = {sku: 0 for sku in valid_skus}
     total_price = 0
@@ -42,6 +42,11 @@ def checkout(skus):
     total_price -= (item_counts['K'] // 2) * 10
     total_price -= (item_counts['P'] // 5) * 50
     total_price -= (item_counts['Q'] // 3) * 10
+    total_price -= (item_counts['S'] // 3) * 15
+    total_price -= (item_counts['T'] // 3) * 15
+    total_price -= (item_counts['X'] // 3) * 6
+    total_price -= (item_counts['Y'] // 3) * 15
+    total_price -= (item_counts['Z'] // 3) * 18
 
     h_count = item_counts['H']
     total_price -= (h_count // 10) * 20  
@@ -61,8 +66,6 @@ def checkout(skus):
     v_count %= 3
     total_price -= (v_count // 2) * 10 
 
-    
-
     return total_price
 
 def calculate_F_price(item_counts, prices):
@@ -74,10 +77,5 @@ def calculate_F_price(item_counts, prices):
     remainder_price = remainder * prices['F']
     
     return offer_price + remainder_price
-
-# def count_multibuy_letters(string):
-#     letters = 'STXYZ'
-#     counts = {letter: string.count(letter) for letter in letters}
-#     return counts
 
 
