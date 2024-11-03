@@ -29,3 +29,9 @@ class TestCheckout():
     def test_valid_SKU_special_offer_A(self):
         assert checkout_solution.checkout('AAA') == 130
 
+    def test_valid_SKU_special_offer_B(self):
+        assert checkout_solution.checkout('BB') == 45
+
+    def test_complex_SKU_entry(self):
+        assert checkout_solution.checkout('ABCDABCD') == 215
+
