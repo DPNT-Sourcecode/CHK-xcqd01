@@ -3,8 +3,16 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    valid_skus = ['A', 'B', 'C', 'D', 'E', 'F']
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10}
+    valid_skus = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
+    'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+]
+    prices = {
+    'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 
+    'I': 35, 'J': 60, 'K': 80, 'L': 90, 'M': 15, 'N': 40, 'O': 10, 'P': 50, 
+    'Q': 30, 'R': 50, 'S': 30, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 90, 
+    'Y': 10, 'Z': 50
+}
     item_counts = {sku: 0 for sku in valid_skus}
     total_price = 0
 
@@ -27,6 +35,8 @@ def checkout(skus):
     total_price -= (item_counts['A'] // 5) * 50 
     total_price -= (item_counts['A'] % 5 // 3) * 20  
     total_price -= (item_counts['B'] // 2) * 15
+    total_price -= (item_counts['H'] // 5) * 5
+    
 
     return total_price
 

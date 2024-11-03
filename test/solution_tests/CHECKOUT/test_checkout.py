@@ -4,9 +4,6 @@ import pytest
 class TestCheckout():
     def test_invalid_SKU_number(self):
         assert checkout_solution.checkout(1) == -1
-    
-    def test_invalid_SKU_letter(self):
-        assert checkout_solution.checkout('G') == -1
 
     def test_valid_SKU_A(self):
         assert checkout_solution.checkout('A') == 50
@@ -67,3 +64,6 @@ class TestCheckout():
 
     def test_valid_SKU_special_offer_5H(self):
         assert checkout_solution.checkout('HHHHH') == 45
+
+    def test_valid_SKU_special_offer_10H(self):
+        assert checkout_solution.checkout('HHHHHHHHHH') == 80
