@@ -21,10 +21,10 @@ def checkout(skus):
         item_counts[sku] += 1
         total_price += prices[sku]
     total_price += apply_special_offer(item_counts, prices)
-    apply_free_item_offer(item_counts, prices)
-
-    total_price -= item_counts['F'] * prices['F']
     total_price += calculate_F_price(item_counts, prices)
+    total_price -= item_counts['F'] * prices['F']
+    total_price -= apply_free_item_offer(item_counts, prices)
+   
 
     total_price -= (item_counts['A'] // 5) * 50
     total_price -= (item_counts['A'] % 5 // 3) * 20
@@ -81,12 +81,16 @@ def apply_special_offer(item_counts, prices):
     return total_price
 
 def apply_free_item_offer(item_counts, prices):
+    total_price = 0
+
     free_Bs = item_counts['E'] // 2
     if free_Bs > 0:
-        total_price -= min(free_Bs, item_counts['B']) * prices['B']
+        total_price += min(free_Bs, item_counts['B']) * prices['B']
         item_counts['B'] -= min(free_Bs, item_counts['B'])
 
     free_Qs = item_counts['R'] // 3
     if free_Qs > 0:
-        total_price -= min(free_Qs, item_counts['Q']) * prices['Q']
+        total_price += min(free_Qs, item_counts['Q']) * prices['Q']
         item_counts['Q'] -= min(free_Qs, item_counts['Q'])
+
+    return total_price
