@@ -100,4 +100,3 @@ def apply_special_offer(item_counts, prices):
             items_used_in_sets -= 1
 
     return total_price
-
