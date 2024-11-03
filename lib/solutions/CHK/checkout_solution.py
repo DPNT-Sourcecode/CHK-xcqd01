@@ -16,31 +16,30 @@ def checkout(skus):
         total_price += prices[sku]
 
     free_Bs = item_counts['E'] // 2
-    free_Fs = item_counts['F'] // 2
-
-    ## FF -> 20, - value of 1F, return 10
-    # FFF -> 30, - value of 1 F, return 20
-        # works correctly ^ 
-    # FFFF -> 40, - value of 1 F, return 30 
-        # returns 20 instead of 30 ^ 
-    # FFFFF -> 50, - value of 1 F, return 40
-    # FFFFFFF -> 60, - value of 2 F, return 50
 
     if free_Bs > 0:
         total_price -= min(free_Bs, item_counts['B']) * prices['B']
         item_counts['B'] -= min(free_Bs, item_counts['B']) 
 
-    if free_Fs > 0 and item_counts['F'] > 2:
-        total_price -= free_Fs * prices['F']
-        item_counts['F'] -= free_Fs  # Adjust the count of 'F's
+    total_price -= item_counts['F'] * prices['F']  # Remove the original 'F' price
+    total_price += calculate_F_price(item_counts, prices)
 
     total_price -= (item_counts['A'] // 5) * 50 
     total_price -= (item_counts['A'] % 5 // 3) * 20  
     total_price -= (item_counts['B'] // 2) * 15
-
 
     return total_price
 
 def get_price(sku):
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     return prices.get(sku, 0)
+
+def calculate_F_price(item_counts, prices):
+    f_count = item_counts['F']
+    group_of_3 = f_count // 3  
+    remainder = f_count % 3   
+    
+    offer_price = group_of_3 * 20
+    remainder_price = remainder * prices['F']
+    
+    return offer_price + remainder_price
