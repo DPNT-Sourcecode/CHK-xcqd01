@@ -26,14 +26,13 @@ def checkout(skus):
     stxyz_count = item_counts['S'] + item_counts['T'] + item_counts['X'] + item_counts['Y'] + item_counts['Z']
     sets_of_three = stxyz_count // 3
     total_price -= sets_of_three * 45
-    
-    # Update counts of S, T, X, Y, Z after applying the special offer
-    remaining_items = stxyz_count % 3
-    item_counts['S'] -= min(item_counts['S'], remaining_items)
-    item_counts['T'] -= min(item_counts['T'], remaining_items)
-    item_counts['X'] -= min(item_counts['X'], remaining_items)
-    item_counts['Y'] -= min(item_counts['Y'], remaining_items)
-    item_counts['Z'] -= min(item_counts['Z'], remaining_items)
+
+    items_used_in_sets = sets_of_three * 3
+
+    for item in ['S', 'T', 'X', 'Y', 'Z']:
+        while items_used_in_sets > 0 and item_counts[item] > 0:
+            item_counts[item] -= 1
+            items_used_in_sets -= 1
 
     free_Bs = item_counts['E'] // 2
     if free_Bs > 0:
