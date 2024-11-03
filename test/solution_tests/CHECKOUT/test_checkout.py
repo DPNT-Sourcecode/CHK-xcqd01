@@ -137,5 +137,9 @@ class TestCheckout():
     def test_special_offer_STXZ(self):
         assert checkout_solution.checkout('STXZ') == 62
 
+    def test_valid_SKU_ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ(self):
+        assert checkout_solution.checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ') == 1602
+
+
 
 
