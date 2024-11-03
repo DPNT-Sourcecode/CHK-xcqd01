@@ -134,4 +134,3 @@ class TestCheckout():
     def test_valid_SKU_Z(self):
         assert checkout_solution.checkout('Z') == 21
 
-
