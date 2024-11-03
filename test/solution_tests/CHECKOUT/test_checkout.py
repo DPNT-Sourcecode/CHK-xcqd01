@@ -55,3 +55,6 @@ class TestCheckout():
 
     def test_valid_SKU_special_offer_FFF(self):
         assert checkout_solution.checkout('FFF') == 20
+
+    def test_valid_SKU_special_offer_FFFF(self):
+        assert checkout_solution.checkout('FFFF') == 30

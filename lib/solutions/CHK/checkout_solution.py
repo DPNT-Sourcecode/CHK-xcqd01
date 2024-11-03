@@ -39,6 +39,3 @@ def checkout(skus):
 def get_price(sku):
     prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
     return prices.get(sku, 0)
-
-
-
