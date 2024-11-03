@@ -60,12 +60,10 @@ def checkout(skus):
     total_price -= (v_count // 3) * 20 
     v_count %= 3
     total_price -= (v_count // 2) * 10 
+    
+    # total_price -= (count_letters(input_string) // 3) * 20
 
     return total_price
-
-def get_price(sku):
-    prices = {'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40}
-    return prices.get(sku, 0)
 
 def calculate_F_price(item_counts, prices):
     f_count = item_counts['F']
@@ -76,3 +74,8 @@ def calculate_F_price(item_counts, prices):
     remainder_price = remainder * prices['F']
     
     return offer_price + remainder_price
+
+# def count_multibuy_letters(string):
+#     letters = 'STXYZ'
+#     counts = {letter: string.count(letter) for letter in letters}
+#     return counts
