@@ -35,8 +35,12 @@ def checkout(skus):
     total_price -= (item_counts['A'] // 5) * 50 
     total_price -= (item_counts['A'] % 5 // 3) * 20  
     total_price -= (item_counts['B'] // 2) * 15
-    total_price -= (item_counts['H'] // 5) * 5
-    
+    total_price -= (item_counts['K'] // 2) * 10
+
+    if item_counts['H'] >= 10:
+        total_price -= (item_counts['H'] // 10) * 20
+    else:
+        total_price -= (item_counts['H'] // 5) * 5
 
     return total_price
 
