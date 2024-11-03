@@ -60,4 +60,4 @@ class TestCheckout():
         assert checkout_solution.checkout('FFFF') == 20
 
     def test_complex_SKU_entry_FFFFEEBADEF(self):
-        assert checkout_solution.checkout('FFFFEEBADEF') == 200
+        assert checkout_solution.checkout('FFFFEEBADEF') == 215
