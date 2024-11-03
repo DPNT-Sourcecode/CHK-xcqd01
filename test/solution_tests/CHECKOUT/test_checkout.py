@@ -17,6 +17,15 @@ class TestCheckout():
     def test_valid_SKU_C(self):
         assert checkout_solution.checkout('C') == 20
 
+    def test_valid_SKU_D(self):
+        assert checkout_solution.checkout('D') == 15
+
     def test_valid_SKU_AB(self):
         assert checkout_solution.checkout('AB') == 80
+
+    def test_valid_SKU_ABCDE(self):
+        assert checkout_solution.checkout('ABCDA') == 165
+
+    def test_valid_SKU_special_offer_A(self):
+        assert checkout_solution.checkout('AAA') == 130
 
