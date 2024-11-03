@@ -3,7 +3,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    valid_skus = ['A', 'B', 'C', 'D']
+    valid_skus = ['A', 'B', 'C', 'D', 'E']
     total_price = 0
     total_A = 0
     total_B = 0
@@ -35,6 +35,5 @@ def get_price(sku):
         return 20
     elif(sku == 'D'):
         return 15
-
-
-
+    elif(sku == 'E'):
+        return 40

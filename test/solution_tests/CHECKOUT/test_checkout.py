@@ -6,7 +6,7 @@ class TestCheckout():
         assert checkout_solution.checkout(1) == -1
     
     def test_invalid_SKU_letter(self):
-        assert checkout_solution.checkout('E') == -1
+        assert checkout_solution.checkout('F') == -1
 
     def test_valid_SKU_A(self):
         assert checkout_solution.checkout('A') == 50
@@ -35,3 +35,11 @@ class TestCheckout():
     def test_complex_SKU_entry(self):
         assert checkout_solution.checkout('ABCDABCD') == 215
 
+    def test_valid_SKU_E(self):
+        assert checkout_solution.checkout('E') == 40
+
+    def test_valid_SKU_EE(self):
+        assert checkout_solution.checkout('EE') == 80
+
+    def test_valid_SKU_EEB(self):
+        assert checkout_solution.checkout('EEB') == 80
