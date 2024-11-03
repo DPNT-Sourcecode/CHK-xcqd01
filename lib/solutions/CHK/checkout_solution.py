@@ -5,8 +5,12 @@
 def checkout(skus):
 
     # edge cases
-    if(skus == 'STXZ'):
-        return 62
+    # if(skus == 'STXZ'):
+    #     return 62
+    # elif(skus == 'ZZZS'):
+    #     return 65
+    # elif(skus == 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'):
+    #     return 1602
 
     valid_skus = [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
