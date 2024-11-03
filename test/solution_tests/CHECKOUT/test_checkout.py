@@ -91,3 +91,22 @@ class TestCheckout():
 
     def test_valid_SKU_many_Hs(self):
         assert checkout_solution.checkout('HHHHHHHHHHHHHHH') == 125
+
+    def test_special_offer_STX(self):
+        assert checkout_solution.checkout('STX') == 45
+
+    def test_special_offer_SSS(self):
+        assert checkout_solution.checkout('SSS') == 45
+
+    def test_special_offer_STXY(self):
+        assert checkout_solution.checkout('STXY') == 65  
+
+    def test_special_offer_STXYZ(self):
+        assert checkout_solution.checkout('STXYZ') == 90  
+
+    def test_special_offer_SSSSSS(self):
+        assert checkout_solution.checkout('SSSSSS') == 90 
+
+    def test_special_offer_SSTTXXYYZZ(self):
+        assert checkout_solution.checkout('SSTTXXYYZZ') == 150  
+
