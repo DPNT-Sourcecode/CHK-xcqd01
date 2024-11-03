@@ -21,17 +21,7 @@ def checkout(skus):
         item_counts[sku] += 1
         total_price += prices[sku]
     total_price += apply_special_offer(item_counts, prices)
-    print(item_counts)
-
-    free_Bs = item_counts['E'] // 2
-    if free_Bs > 0:
-        total_price -= min(free_Bs, item_counts['B']) * prices['B']
-        item_counts['B'] -= min(free_Bs, item_counts['B'])
-
-    free_Qs = item_counts['R'] // 3
-    if free_Qs > 0:
-        total_price -= min(free_Qs, item_counts['Q']) * prices['Q']
-        item_counts['Q'] -= min(free_Qs, item_counts['Q'])
+    apply_free_item_offer(item_counts, prices)
 
     total_price -= item_counts['F'] * prices['F']
     total_price += calculate_F_price(item_counts, prices)
@@ -87,6 +77,16 @@ def apply_special_offer(item_counts, prices):
             total_price -= prices[item]
             item_counts[item] -= 1
             items_used_in_sets -= 1
-            print(item_counts)
 
     return total_price
+
+def apply_free_item_offer(item_counts, prices):
+    free_Bs = item_counts['E'] // 2
+    if free_Bs > 0:
+        total_price -= min(free_Bs, item_counts['B']) * prices['B']
+        item_counts['B'] -= min(free_Bs, item_counts['B'])
+
+    free_Qs = item_counts['R'] // 3
+    if free_Qs > 0:
+        total_price -= min(free_Qs, item_counts['Q']) * prices['Q']
+        item_counts['Q'] -= min(free_Qs, item_counts['Q'])
