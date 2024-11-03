@@ -1,11 +1,6 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-
-    # edge cases for CHK_R5 (eg. SSSZ should return 66, not 65)
- 
     valid_skus = [
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 
         'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
@@ -25,9 +20,9 @@ def checkout(skus):
     for sku in skus:
         item_counts[sku] += 1
         total_price += prices[sku]
-
     total_price += apply_special_offer(item_counts, prices)
-   
+    print(item_counts)
+
     free_Bs = item_counts['E'] // 2
     if free_Bs > 0:
         total_price -= min(free_Bs, item_counts['B']) * prices['B']
@@ -92,5 +87,6 @@ def apply_special_offer(item_counts, prices):
             total_price -= prices[item]
             item_counts[item] -= 1
             items_used_in_sets -= 1
+            print(item_counts)
 
     return total_price
