@@ -61,10 +61,7 @@ def checkout(skus):
     v_count %= 3
     total_price -= (v_count // 2) * 10 
 
-    letters_to_count = ['S', 'T', 'Y', 'X', 'Z']
-    total_multibuy = sum(data[letter] for letter in letters_to_count if letter in data)
     
-    total_price -= (total_multibuy // 3) * 20
 
     return total_price
 
@@ -82,4 +79,5 @@ def calculate_F_price(item_counts, prices):
 #     letters = 'STXYZ'
 #     counts = {letter: string.count(letter) for letter in letters}
 #     return counts
+
 
