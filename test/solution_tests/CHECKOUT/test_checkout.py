@@ -43,3 +43,9 @@ class TestCheckout():
 
     def test_valid_SKU_EEB(self):
         assert checkout_solution.checkout('EEB') == 80
+
+    def test_valid_SKU_special_offer_AAAAA(self):
+        assert checkout_solution.checkout('AAAAA') == 200
+
+    def test_valid_SKU_special_offer_BEBEEE(self):
+        assert checkout_solution.checkout('BEBEEE') == 160
