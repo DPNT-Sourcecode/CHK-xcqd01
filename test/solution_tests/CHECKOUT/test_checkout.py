@@ -72,4 +72,7 @@ class TestCheckout():
         assert checkout_solution.checkout('KK') == 150
 
     def test_valid_SKU_special_offer_3N(self):
-        assert checkout_solution.checkout('NNNMM') == 150
+        assert checkout_solution.checkout('NNNMM') == 135
+
+    def test_valid_SKU_special_offer_5P(self):
+        assert checkout_solution.checkout('PPPPP') == 200
