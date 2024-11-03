@@ -22,25 +22,18 @@ def checkout(skus):
         item_counts[sku] += 1
         total_price += prices[sku]
 
-    total_price += apply_special_offer(item_counts, prices)
-    total_price += calculate_F_price(item_counts, prices)
+    total_price += calculate_multibuy_total(item_counts, prices)
+    total_price += calculate_F_discount(item_counts, prices)
     total_price -= item_counts['F'] * prices['F']
-    total_price -= apply_free_item_offer(item_counts, prices)
-    total_price -= apply_basic_discounts(item_counts)
+    total_price -= calculate_free_items_discount(item_counts, prices)
+    total_price -= calculate_basic_discounts(item_counts)
 
     return total_price
 
 def is_valid_sku_input(skus, valid_skus):
     return isinstance(skus, str) and all(char in valid_skus for char in skus)
 
-def calculate_F_price(item_counts, prices):
-    f_count = item_counts['F']
-    group_of_3 = f_count // 3
-    remainder = f_count % 3
-
-    return group_of_3 * 20 + remainder * prices['F']
-
-def apply_special_offer(item_counts, prices):
+def calculate_multibuy_total(item_counts, prices):
     stxyz_count = sum(item_counts[item] for item in ['S', 'T', 'X', 'Y', 'Z'])
     sets_of_three = stxyz_count // 3
     total_price = sets_of_three * 45
@@ -54,7 +47,14 @@ def apply_special_offer(item_counts, prices):
 
     return total_price
 
-def apply_free_item_offer(item_counts, prices):
+def calculate_F_discount(item_counts, prices):
+    f_count = item_counts['F']
+    group_of_3 = f_count // 3
+    remainder = f_count % 3
+
+    return group_of_3 * 20 + remainder * prices['F']
+
+def calculate_free_items_discount(item_counts, prices):
     total_discount = 0
     free_items = {
         'B': item_counts['E'] // 2,
@@ -69,7 +69,7 @@ def apply_free_item_offer(item_counts, prices):
 
     return total_discount
 
-def apply_basic_discounts(item_counts):
+def calculate_basic_discounts(item_counts):
     total_discount = 0
     discounts = {
         'A': (5, 50),
@@ -90,3 +90,4 @@ def apply_basic_discounts(item_counts):
     total_discount += (item_counts['V'] % 3 // 2) * 10
 
     return total_discount
+
